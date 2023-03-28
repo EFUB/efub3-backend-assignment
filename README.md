@@ -3,11 +3,11 @@
 
 ## 🍀 Community ERD
 
-[사진]
+[ERD Cloud 캡 사진]
 
 ## 🍀 Community query
 
-[사진]
+[MySQL 워크밴치 캡쳐 사진]
 
 ## 🍀 Community API 문서 
 
