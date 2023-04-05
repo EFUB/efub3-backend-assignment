@@ -2,13 +2,8 @@
 
 
 ## 🍀 Community ERD
+![ERD](img/Community_ERD.png)
 
-[사진]
-
-## 🍀 Community query
-
-[사진]
-
-## 🍀 Community API 문서 
-
-[노션 링크 첨부]
+## 🍀 Community API 문서
+* [2주차 과제] API 문서 (1): https://painted-catboat-bae.notion.site/API-1-c665a9b341b34f29840fe9661a973e80 <br>
+* [3주차 과제] API 문서 (2): https://painted-catboat-bae.notion.site/api-08bdc3ff15ff47d6ac46c4d2b62e8280
