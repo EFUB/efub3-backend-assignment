@@ -9,3 +9,5 @@
 ## 🍀 Community API 문서 
 
 [노션 링크] https://opaque-grease-615.notion.site/EFUB-MySQL-API-b76a8e2e97bd489894a457db1f01fb74
+
+[피드백 후 수정 노션 링크] https://opaque-grease-615.notion.site/EFUB-MySQL-API-b76a8e2e97bd489894a457db1f01fb74
