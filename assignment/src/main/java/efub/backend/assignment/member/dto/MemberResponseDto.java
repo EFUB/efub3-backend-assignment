@@ -15,6 +15,7 @@ public class MemberResponseDto {
     private String university;
     private String studentId;
     // private String bio;
+    
     public MemberResponseDto(String email, String nickname, String university, String studentId){
         this.email = email;
         this.nickname = nickname;
