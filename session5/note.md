@@ -1,1 +1,10 @@
 
+![게시판 생성](https://user-images.githubusercontent.com/108855492/231963209-4f750a0b-49e9-4aef-add5-3e7576f861a9.png)
+![게시판 조회](https://user-images.githubusercontent.com/108855492/231963233-aa5ef6b9-8234-4711-bd0b-fda0c46c5d68.png)
+![게시판 수정](https://user-images.githubusercontent.com/108855492/231963264-c0d938be-a1df-4c42-96c9-f39e11d241a6.png)
+![게시판 삭제](https://user-images.githubusercontent.com/108855492/231963290-de7fb484-58d2-40d3-824b-596cfb6e6210.png)
+![게시글 생성](https://user-images.githubusercontent.com/108855492/231963310-621d11fd-e5e4-44c7-969e-c7d65e4b01c1.png)
+![게시글 목록 조회](https://user-images.githubusercontent.com/108855492/231963352-53aa9fae-b906-4b9d-8896-4f91bf5e55a5.png)
+![게시글 조회](https://user-images.githubusercontent.com/108855492/231963365-adbdf105-90a1-45be-ae20-1aafcdef36f2.png)
+![게시글 수정](https://user-images.githubusercontent.com/108855492/231963391-fe97f858-f635-4048-b7f8-a41bc8989d8f.png)
+![게시글 삭제](https://user-images.githubusercontent.com/108855492/231963409-5ec141cb-0338-4f47-bc9b-7a054c74f70a.png)
