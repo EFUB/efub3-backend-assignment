@@ -49,8 +49,8 @@ public class Post extends BaseTimeEntity{
     }
 
     // 게시글 내용 수정
-    public void updatePost(PostModifyRequestDto requestDto) {
-        this.content = requestDto.getContent();
+    public void updatePost(String content) {
+        this.content = content;
     }
 
 
