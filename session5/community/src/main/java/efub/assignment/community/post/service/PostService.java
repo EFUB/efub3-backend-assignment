@@ -54,7 +54,7 @@ public class PostService {
         postRepository.delete(post);
     }
 
-
+    @Transactional
     public Post modifyPost(Long postId, PostModifyRequestDto requestDto) {
         Post post=postRepository.findByPostIdAndWriter_MemberId(postId,requestDto.getWriterId())
                 .orElseThrow(()->new IllegalArgumentException("잘못된 접근입니다."));
