@@ -20,13 +20,13 @@ public class Board extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //PK 생성 전략을 정의
     private Long boardId;
 
-    @Column
+    @Column(name = "board_name")
     private String boardName;
 
-    @Column
+    @Column(name="intro")
     private String intro;
 
-    @Column
+    @Column(name="notice")
     private String notice;
 
     @ManyToOne
