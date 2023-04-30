@@ -48,7 +48,7 @@ public class PostService {
         return postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다."));
     }
-
+    @Transactional(readOnly = true)
     public void removePost(Long postId, Long memberId) { // 리턴값 없음
         Post post = postRepository.findByPostIdAndWriter_MemberId(postId, memberId)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 접근입니다."));

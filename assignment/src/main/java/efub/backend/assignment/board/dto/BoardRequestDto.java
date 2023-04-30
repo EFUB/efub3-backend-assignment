@@ -1,6 +1,7 @@
 package efub.backend.assignment.board.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /*
 {
@@ -12,6 +13,7 @@ import lombok.Getter;
  */
 
 @Getter
+@NoArgsConstructor
 public class BoardRequestDto {
     private String boardTitle;
     private String content;
