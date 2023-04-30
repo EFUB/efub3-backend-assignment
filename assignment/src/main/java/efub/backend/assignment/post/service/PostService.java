@@ -23,7 +23,6 @@ public class PostService {
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
 
-    @Transactional
     public Post addPost(PostRequestDto requestDto) {
         Member writer = memberRepository.findById(requestDto.getWriterId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 계정입니다."));// Post를 넘겨받는 dto가 request 파라미터
@@ -41,25 +40,22 @@ public class PostService {
         );
     }
 
-    @Transactional
     public List<Post> findPostList() {
         return postRepository.findAll();
     }
 
-    @Transactional
     public Post findPost(Long postId) {
         return postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다."));
     }
 
-    @Transactional
     public void removePost(Long postId, Long memberId) { // 리턴값 없음
         Post post = postRepository.findByPostIdAndWriter_MemberId(postId, memberId)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 접근입니다."));
         // 메소드를 구체화 시켜주는 방법, postId, accountId에 따라서 접근이 잘못된 것에 대해 알려줄 수 있음
         postRepository.delete(post); // 아무것도 조회해주지 않기에 굳이 리턴할 필요 없음
     }
-    @Transactional
+
     public Post modifyPost(Long postId, PostModifyRequestDto requestDto) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 접근입니다."));

@@ -15,5 +15,5 @@ public class BoardModifyRequestDto {
     private String boardTitle;
     private String content;
     private String notice;
-    private Long BoardHostId;
+    private Long boardHostId;
 }
