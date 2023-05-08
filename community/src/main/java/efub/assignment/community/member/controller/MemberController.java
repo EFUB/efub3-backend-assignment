@@ -22,14 +22,14 @@ public class MemberController {
     public MemberResponseDto signUp(@RequestBody @Valid SignUpRequestDto requestDto){
         Long id = memberService.signUp(requestDto);
         Member findMember = memberService.findMemberById(id);
-        return MemberResponseDto.from(findMember);
+        return new MemberResponseDto(findMember);
     }
 
     @GetMapping("/{memberId}")
     @ResponseStatus(value = HttpStatus.OK)
     public MemberResponseDto getMember(@PathVariable Long memberId){
         Member findMember = memberService.findMemberById(memberId);
-        return MemberResponseDto.from(findMember);
+        return new MemberResponseDto(findMember);
     }
 
     @PatchMapping("/profile/{memberId}")
@@ -37,7 +37,7 @@ public class MemberController {
     public MemberResponseDto update(@PathVariable final Long memberId, @RequestBody @Valid final MemberUpdateRequestDto responseDto){
         Long id = memberService.update(memberId, responseDto);
         Member findMember = memberService.findMemberById(id);
-        return MemberResponseDto.from(findMember);
+        return new MemberResponseDto(findMember);
     }
 
     @PatchMapping("/{memberId}")

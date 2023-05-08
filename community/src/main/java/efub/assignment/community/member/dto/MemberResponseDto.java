@@ -1,32 +1,34 @@
 package efub.assignment.community.member.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import efub.assignment.community.member.domain.Member;
+import efub.assignment.community.member.domain.MemberStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class MemberResponseDto {
+
+    private Long memberId;
     private String email;
     private String nickname;
     private String university;
     private String studentId;
+    private MemberStatus status;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
 
-    public MemberResponseDto(String email, String nickname, String university, String studentId){
-        this.email = email;
-        this.nickname = nickname;
-        this.university = university;
-        this.studentId = studentId;
-    }
-
-    public static MemberResponseDto from(Member member){
-        return new MemberResponseDto(
-                member.getEmail(),
-                member.getNickname(),
-                member.getUniversity(),
-                member.getStudentId());
+    public MemberResponseDto(Member member){
+        this.memberId = member.getMemberId();
+        this.email = member.getEmail();
+        this.nickname = member.getNickname();
+        this.university = member.getUniversity();
+        this.studentId = member.getStudentId();
+        this.status = member.getStatus();
+        this.createdDate = member.getCreatedDate();
+        this.modifiedDate = member.getModifiedDate();
     }
 }

@@ -1,4 +1,4 @@
-package efub.assignment.community.member.global.entity;
+package efub.assignment.community.global.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -15,10 +15,10 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseTimeEntity {
     @CreatedDate
-    @Column(updatable = false)
+    @Column(updatable = false)  //UPDATE문에서 해당 칼럼을 제외
     private LocalDateTime createdDate;
 
     @LastModifiedDate
-    @Column(updatable = false)
+    @Column(insertable = false)  //INSERT문에서 해당 칼럼을 제외
     private LocalDateTime modifiedDate;
 }
