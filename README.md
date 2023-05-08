@@ -3,12 +3,9 @@
 
 ## 🍀 Community ERD
 
-[사진]
+<img width="80%" src="https://i.imgur.com/fGhWgPd.png"/></br>
 
-## 🍀 Community query
-
-[사진]
 
 ## 🍀 Community API 문서 
 
-[노션 링크 첨부]
+https://www.notion.so/EFUB-REST-API-51ecf61eefca4aa9a19ae78d9af8d185
