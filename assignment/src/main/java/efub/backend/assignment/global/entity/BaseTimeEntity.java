@@ -1,4 +1,4 @@
-package efub.backend.assignment.member.global.entity;
+package efub.backend.assignment.global.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

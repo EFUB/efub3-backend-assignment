@@ -9,6 +9,16 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/*
+{
+        "email" : "efub2@gmail.com",
+        "password" : "Efub1234!",
+        "nickname" : "퍼비",
+        "university" : "이화여자대학교",
+        "studentId" : "2076216"
+        }
+*/
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SignUpRequestDto {

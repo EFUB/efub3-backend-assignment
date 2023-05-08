@@ -1,5 +1,6 @@
 package efub.backend.assignment.member.domain;
 
+import efub.backend.assignment.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Member {
+public class Member extends BaseTimeEntity { // Member 클래스의 생성시간과 변경시간 기록을 위해 baseTimeEntity 클래스 상속
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

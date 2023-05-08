@@ -15,12 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    public Long signUp(SignUpRequestDto requestDto){
+    public Member signUp(SignUpRequestDto requestDto){
         if(existsByEmail(requestDto.getEmail())){
             throw new IllegalArgumentException("이미 존재하는 email입니다. email="+requestDto.getEmail());
         }
         Member member = memberRepository.save(requestDto.toEntity());
-        return member.getMemberId();
+        return member;
     }
 
     @Transactional(readOnly = true)
