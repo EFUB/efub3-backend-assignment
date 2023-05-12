@@ -4,7 +4,7 @@ import efub.session.blog.board.domain.Board;
 import efub.session.blog.board.dto.BoardModifyRequestDto;
 import efub.session.blog.board.dto.BoardRequestDto;
 import efub.session.blog.board.repository.BoardRepository;
-import efub.session.blog.member.MemberRepository;
+import efub.session.blog.member.repository.MemberRepository;
 import efub.session.blog.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

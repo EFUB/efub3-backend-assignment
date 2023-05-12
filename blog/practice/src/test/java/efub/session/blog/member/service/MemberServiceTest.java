@@ -1,6 +1,6 @@
 package efub.session.blog.member.service;
 
-import efub.session.blog.member.MemberRepository;
+import efub.session.blog.member.repository.MemberRepository;
 import efub.session.blog.member.domain.Member;
 import efub.session.blog.member.dto.MemberUpdateRequestDto;
 import efub.session.blog.member.dto.SignUpRequestDto;

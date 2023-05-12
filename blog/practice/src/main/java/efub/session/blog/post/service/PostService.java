@@ -1,13 +1,13 @@
 package efub.session.blog.post.service;
 
-import efub.session.blog.member.MemberRepository;
+import efub.session.blog.member.repository.MemberRepository;
 import efub.session.blog.member.domain.Member;
+import efub.session.blog.member.service.MemberService;
 import efub.session.blog.post.domain.Post;
 import efub.session.blog.post.dto.PostModifyRequestDto;
 import efub.session.blog.post.dto.PostRequestDto;
 import efub.session.blog.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.event.spi.PostCollectionRecreateEvent;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,5 +52,11 @@ public class PostService {
                 .orElseThrow(()->new IllegalArgumentException("잘못된 접근입니다."));
         post.updatePost(requestDto);
         return post;
+    }
+
+    @Transactional(readOnly = true)
+    public List<Post> findPostListByWriter(Long memberId){
+        Member writer= MemberService.findMemberById(memberId);
+        return postRepository.findAllByWriter(writer);
     }
 }
