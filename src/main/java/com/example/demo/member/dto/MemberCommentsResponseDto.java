@@ -32,7 +32,6 @@ public class MemberCommentsResponseDto {
 
         private Long commentId;
         private Long postId;
-        private Boolean anonymous;
         private String content;
         private LocalDateTime createdDate;
         private LocalDateTime modifiedDate;
@@ -40,7 +39,6 @@ public class MemberCommentsResponseDto {
         public MemberComment(Comment comment) {
             this.commentId = comment.getCommentId();
             this.postId = comment.getPost().getPostId();
-            this.anonymous = comment.getPost().getAnonymous();
             this.content = comment.getContent();
             this.createdDate = comment.getCreatedDate();
             this.modifiedDate = comment.getModifiedDate();
