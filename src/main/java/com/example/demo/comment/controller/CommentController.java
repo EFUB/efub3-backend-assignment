@@ -17,6 +17,14 @@ public class CommentController {
 
     private final CommentService commentService;    // 의존관계: CommentController -> CommentService
 
+    // ID를 기준으로 댓글 조회
+    @GetMapping("/{commentId}")
+    @ResponseStatus(value = HttpStatus.OK)
+    public CommentResponseDto getComment(@PathVariable Long commentId) {
+        Comment findComment = commentService.findCommentById(commentId);
+        return CommentResponseDto.of(findComment);
+    }
+
     // 댓글 수정
     @PatchMapping("/{commentId}")
     @ResponseStatus(value = HttpStatus.OK)
