@@ -19,6 +19,7 @@ import java.util.List;
 public class PostService {
     private final MemberRepository memberRepository;
     private final PostRepository postRepository;
+    private final MemberService memberService;
 
     public Post addPost(PostRequestDto requestDto){
         Member owner = memberRepository.findById(requestDto.getMemberId())
@@ -56,7 +57,7 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public List<Post> findPostListByWriter(Long memberId){
-        Member writer= MemberService.findMemberById(memberId);
-        return postRepository.findAllByWriter(writer);
+        Member writer= memberService.findMemberById(memberId);
+        return postRepository.findAllByOwner(writer);
     }
 }

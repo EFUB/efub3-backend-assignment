@@ -1,5 +1,6 @@
 package efub.session.blog.member.controller;
 
+import efub.session.blog.comment.domain.Comment;
 import efub.session.blog.comment.service.CommentService;
 import efub.session.blog.member.domain.Member;
 import efub.session.blog.member.dto.MemberCommentsResponseDto;
@@ -8,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.stream.events.Comment;
 import java.util.List;
 
 @RestController

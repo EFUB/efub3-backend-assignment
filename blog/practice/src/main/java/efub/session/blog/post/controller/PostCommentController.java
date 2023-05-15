@@ -1,5 +1,6 @@
 package efub.session.blog.post.controller;
 
+import efub.session.blog.comment.domain.Comment;
 import efub.session.blog.comment.dto.CommentRequestDto;
 import efub.session.blog.comment.dto.CommentResponseDto;
 import efub.session.blog.comment.service.CommentService;
@@ -9,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.xml.stream.events.Comment;
 import java.util.List;
 
 @RestController

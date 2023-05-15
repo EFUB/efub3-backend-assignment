@@ -30,7 +30,7 @@ public class MemberService {
     }
 
     @Transactional(readOnly = true)
-    public static Member findMemberById(Long id) {
+    public Member findMemberById(Long id) {
         return memberRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(("해당 ID를 가진 Member를 찾을 수 없습니다. ID=" + id)));
     }

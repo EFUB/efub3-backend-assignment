@@ -1,8 +1,6 @@
 package efub.session.blog.comment.controller;
 
-import efub.session.blog.board.domain.Board;
-import efub.session.blog.board.dto.BoardModifyRequestDto;
-import efub.session.blog.board.dto.BoardResponseDto;
+
 import efub.session.blog.comment.domain.Comment;
 import efub.session.blog.comment.dto.CommentModifyRequestDto;
 import efub.session.blog.comment.dto.CommentResponseDto;
@@ -22,7 +20,7 @@ public class CommentController {
     @PutMapping("/{commentId}")
     @ResponseStatus(value = HttpStatus.OK)
     public CommentResponseDto commentModify(@PathVariable Long commentId, @RequestBody CommentModifyRequestDto requestDto){
-        Comment comment = CommentService.modifyComment(commentId,requestDto);
-        return new CommentResponseDto(comment);
+        Comment comment = commentService.modifyComment(commentId,requestDto);
+        return CommentResponseDto.of(comment);
     }
 }

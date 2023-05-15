@@ -1,7 +1,6 @@
 package efub.session.blog.comment.service;
 
-import efub.session.blog.board.domain.Board;
-import efub.session.blog.board.dto.BoardModifyRequestDto;
+import efub.session.blog.comment.domain.Comment;
 import efub.session.blog.comment.dto.CommentModifyRequestDto;
 import efub.session.blog.comment.dto.CommentRequestDto;
 import efub.session.blog.comment.repository.CommentRepository;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
-import javax.xml.stream.events.Comment;
 import java.util.List;
 
 @Service
@@ -28,7 +26,7 @@ public class CommentService {
     //댓글 작성
     public Long createComment(Long postId, CommentRequestDto requestDto) {
         Post post = postService.findPost(postId);
-        Member writer = MemberService.findMemberById(requestDto.getMembertId());
+        Member writer = memberService.findMemberById(requestDto.getMemberId());
         return commentRepository.save(requestDto.toEntity(post, writer)).getCommentId();
     }
 
@@ -53,9 +51,9 @@ public class CommentService {
     }
 
     public Comment modifyComment(Long commentId, CommentModifyRequestDto requestDto) {
-        Comment comment = CommentRepository.findByCommentIdAndOwner_MemberId(commentId,requestDto.getMemberId())
+        Comment comment = commentRepository.findByCommentId(commentId)
                 .orElseThrow(()->new IllegalArgumentException("잘못된 접근입니다."));
-        Comment.modifiedComment(requestDto);
+        comment.modifyComment(requestDto);
         return comment;
     }
 }

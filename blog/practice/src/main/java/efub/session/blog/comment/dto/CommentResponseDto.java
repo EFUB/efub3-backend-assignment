@@ -1,12 +1,13 @@
 package efub.session.blog.comment.dto;
 
+import efub.session.blog.comment.domain.Comment;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.xml.stream.events.Comment;
 import java.time.LocalDateTime;
+
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)

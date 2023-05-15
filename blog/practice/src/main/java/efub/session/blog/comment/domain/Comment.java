@@ -1,6 +1,5 @@
 package efub.session.blog.comment.domain;
 
-import efub.session.blog.board.dto.BoardModifyRequestDto;
 import efub.session.blog.comment.dto.CommentModifyRequestDto;
 import efub.session.blog.global.BaseTimeEntity;
 import efub.session.blog.member.domain.Member;
@@ -39,8 +38,7 @@ public class Comment extends BaseTimeEntity {
         this.writer = writer;
     }
 
-    public void modifiedComment(CommentModifyRequestDto requestDto) {
+    public void modifyComment(CommentModifyRequestDto requestDto) {
         this.content = requestDto.getContent();
-        this.writer=requestDto.getMemberId();
     }
 }

@@ -5,14 +5,10 @@ import efub.session.blog.board.dto.BoardModifyRequestDto;
 import efub.session.blog.board.dto.BoardRequestDto;
 import efub.session.blog.board.dto.BoardResponseDto;
 import efub.session.blog.board.service.BoardService;
-import efub.session.blog.member.dto.SignUpRequestDto;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -24,4 +24,8 @@ public class PostResponseDto {
         this.createdDate=post.getCreatedDate();
         this.modifiedDate=post.getModifiedDate();
     }
+
+    public static PostResponseDto from(Post post){
+        return new PostResponseDto(post);
+    }
 }

@@ -1,11 +1,11 @@
 package efub.session.blog.member.dto;
 
+import efub.session.blog.comment.domain.Comment;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.xml.stream.events.Comment;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,7 +40,6 @@ public class MemberCommentsResponseDto {
         public MemberComment(Comment comment) {
             this.commentId = comment.getCommentId();
             this.postId = comment.getPost().getPostId();
-            this.postTitle = comment.getPost().getTitle();
             this.content = comment.getContent();
             this.createdDate = comment.getCreatedDate();
             this.modifiedDate = comment.getModifiedDate();
