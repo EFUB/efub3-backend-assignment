@@ -4,6 +4,7 @@ import efub.session.blog.comment.domain.Comment;
 import efub.session.blog.member.domain.Member;
 import efub.session.blog.post.domain.Post;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotNull;
@@ -25,5 +26,11 @@ public class CommentRequestDto {
                 .content(this.content)
                 .build();
 
+    }
+
+    @Builder
+    public CommentRequestDto(Long memberId, String content){
+        this.memberId=memberId;
+        this.content=content;
     }
 }

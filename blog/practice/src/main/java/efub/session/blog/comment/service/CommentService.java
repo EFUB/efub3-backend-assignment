@@ -50,10 +50,15 @@ public class CommentService {
         return commentRepository.findAllByPost(post);
     }
 
-    public Comment modifyComment(Long commentId, CommentModifyRequestDto requestDto) {
-        Comment comment = commentRepository.findByCommentId(commentId)
-                .orElseThrow(()->new IllegalArgumentException("잘못된 접근입니다."));
-        comment.modifyComment(requestDto);
-        return comment;
+    //댓글 수정
+    public void modifyComment(CommentRequestDto requestDto, Long commentId) {
+        Comment comment = findCommentById(commentId);
+        comment.modifyComment(requestDto.getContent());
+    }
+
+    //댓글 삭제
+    public void deleteComment(Long commentId){
+        Comment comment = findCommentById(commentId);
+        commentRepository.delete(comment);
     }
 }

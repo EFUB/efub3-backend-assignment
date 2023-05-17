@@ -1,6 +1,9 @@
 package efub.session.blog.member.controller;
 
+import efub.session.blog.comment.domain.Comment;
+import efub.session.blog.comment.service.CommentService;
 import efub.session.blog.member.domain.Member;
+import efub.session.blog.member.dto.MemberCommentsResponseDto;
 import efub.session.blog.member.dto.MemberResponseDto;
 import efub.session.blog.member.dto.MemberUpdateRequestDto;
 import efub.session.blog.member.dto.SignUpRequestDto;
@@ -10,13 +13,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/members")
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberService memberService;
-
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
     public MemberResponseDto signUp(@RequestBody @Valid final SignUpRequestDto requestDto){
@@ -41,12 +44,7 @@ public class MemberController {
         return MemberResponseDto.from(findMember);
     }
 
-    @DeleteMapping("/{memberId}")
-    @ResponseStatus(value = HttpStatus.OK)
-    public String withdraw(@PathVariable long memberId){
-        memberService.withdraw(memberId);
-        return "성공적으로 탈퇴가 완료되었습니다.";
-    }
+
 
     @DeleteMapping("/{memberId}")
     @ResponseStatus(value = HttpStatus.OK)
@@ -54,4 +52,5 @@ public class MemberController {
         memberService.delete(memberId);
         return "성공적으로 탈퇴가 완료되었습니다.";
     }
+
 }
