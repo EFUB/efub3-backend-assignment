@@ -1,13 +1,18 @@
 package efub.backend.assignment.post.domain;
 
 import efub.backend.assignment.board.domain.Board;
+import efub.backend.assignment.comment.domain.Comment;
 import efub.backend.assignment.global.entity.BaseTimeEntity;
+import efub.backend.assignment.heart.domain.PostHeart;
 import efub.backend.assignment.member.domain.Member;
 import efub.backend.assignment.post.dto.PostModifyRequestDto;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -30,7 +35,14 @@ public class Post extends BaseTimeEntity {
 
     @ManyToOne
     @JoinColumn(name = "board_id")
-    private Board board; // post의 글 작성자이므로 변수명을 writer로
+    private Board board;
+
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> commentList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PostHeart> postHeartList = new ArrayList<>();
+
 
     @Builder
     public Post(Long postId, String title, String content, Member writer, Board board) {

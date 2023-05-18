@@ -2,6 +2,7 @@ package efub.backend.assignment.comment.domain;
 
 import efub.backend.assignment.comment.dto.CommentModifyRequestDto;
 import efub.backend.assignment.global.entity.BaseTimeEntity;
+import efub.backend.assignment.heart.domain.CommentHeart;
 import efub.backend.assignment.member.domain.Member;
 import efub.backend.assignment.post.domain.Post;
 
@@ -11,6 +12,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity // 객체를 테이블과 매핑
 @Getter
@@ -30,6 +34,9 @@ public class Comment extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false, updatable = false)
     private Member writer;
+
+    @OneToMany(mappedBy = "comment",cascade = CascadeType.ALL,orphanRemoval = true)
+    List<CommentHeart> commentHeartList = new ArrayList<>();
 
     @Builder // 매개변수의 의미 명확
     public Comment(String content, Post post, Member writer) {

@@ -5,6 +5,7 @@ import efub.backend.assignment.comment.domain.Comment;
 import efub.backend.assignment.post.domain.Post;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,5 +32,10 @@ public class CommentRequestDto {
                 .writer(writer)
                 .content(this.content)
                 .build();
+    }
+    @Builder
+    public CommentRequestDto(Long writerId, String content){
+        this.writerId=writerId;
+        this.content=content;
     }
 }

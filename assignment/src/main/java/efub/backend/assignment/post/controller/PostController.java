@@ -1,5 +1,7 @@
 package efub.backend.assignment.post.controller;
 
+import efub.backend.assignment.heart.dto.HeartRequestDto;
+import efub.backend.assignment.heart.service.PostHeartService;
 import efub.backend.assignment.post.domain.Post;
 import efub.backend.assignment.post.dto.PostModifyRequestDto;
 import efub.backend.assignment.post.dto.PostRequestDto;
@@ -9,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 public class PostController {
 
     private final PostService postService;
+    private final PostHeartService postHeartService;
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -53,6 +55,20 @@ public class PostController {
     public PostResponseDto postModify(@PathVariable Long postId, @RequestBody PostModifyRequestDto requestDto){
         Post post = postService.modifyPost(postId, requestDto);
         return PostResponseDto.from(post);
+    }
+
+    @PostMapping("/{postId}/hearts")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public String createPostHeart(@PathVariable final Long postId, @RequestBody final HeartRequestDto requestDto){
+        postHeartService.create(postId, requestDto.getMemberId());
+        return "좋아요를 눌렀습니다.";
+    }
+
+    @DeleteMapping("{postId}/hearts")
+    @ResponseStatus(value = HttpStatus.OK)
+    public String deletePostHeart(@PathVariable final Long postId, @RequestParam final Long memberId){
+        postHeartService.delete(postId,memberId);
+        return "좋아요가 취소되었습니다.";
     }
 
 }
