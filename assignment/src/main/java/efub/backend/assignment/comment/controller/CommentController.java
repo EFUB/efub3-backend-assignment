@@ -25,6 +25,13 @@ public class CommentController {
         return CommentResponseDto.of(comment);
     }
 
+    @DeleteMapping("/{commentId}") // 댓글 삭제
+    @ResponseStatus(HttpStatus.OK)
+    public String deleteComment(@PathVariable final Long commentId){
+        commentService.deleteComment(commentId);
+        return "성공적으로 삭제했습니다.";
+    }
+
     // 댓글 좋아요 추가
     @PostMapping("/hearts/{commentId}")
     @ResponseStatus(value = HttpStatus.CREATED)
