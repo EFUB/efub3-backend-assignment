@@ -42,7 +42,7 @@ public class PostController {
         return new PostResponseDto(findPost);
     }
 
-    // 게시글 삭제 (DELELTE)
+    // 게시글 삭제 (DELETE)
     @DeleteMapping("/{postId}")
     @ResponseStatus(value = HttpStatus.OK)
     public String delete(@PathVariable Long postId, @RequestParam Long memberId) {

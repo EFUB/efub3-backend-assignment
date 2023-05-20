@@ -1,7 +1,9 @@
 package com.example.demo.post.service;
 
 import com.example.demo.board.repository.BoardRepository;
+import com.example.demo.member.domain.Member;
 import com.example.demo.member.repository.MemberRepository;
+import com.example.demo.member.service.MemberService;
 import com.example.demo.post.domain.Post;
 import com.example.demo.post.dto.PostCreateRequestDto;
 import com.example.demo.post.dto.PostModifyRequestDto;
@@ -9,6 +11,8 @@ import com.example.demo.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -18,6 +22,8 @@ public class PostService {
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
+
+    private final MemberService memberService;
 
     public Post write(PostCreateRequestDto requestDto) {
         Post post = new Post (
@@ -48,5 +54,10 @@ public class PostService {
         Post post = postRepository.findByPostIdAndAndWriter_MemberId(postId, memberId)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 접근입니다."));
         postRepository.delete(post);
+    }
+
+    public List<Post> findPostListByWriter(Long memberId) {
+        Member member = memberService.findMemberById(memberId);
+        return postRepository.findAllByWriter(member);
     }
 }
