@@ -1,4 +1,4 @@
-package efub.assignment.community.account.domain;
+package efub.assignment.community.member.domain;
 
 import efub.assignment.community.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import static efub.assignment.community.account.domain.MemberStatus.REGISTERED;
+import static efub.assignment.community.member.domain.MemberStatus.REGISTERED;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

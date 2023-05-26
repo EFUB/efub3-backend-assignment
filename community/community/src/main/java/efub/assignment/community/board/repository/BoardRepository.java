@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface BoardRepository extends JpaRepository<Board, Long> {
-    Optional<Board> findByBoardIdAndAndMaster_MemberID(Long boardId, Long memberId);
+    Optional<Board> findByBoardIdAndAndMaster_MemberId(Long boardId, Long memberId);
 }

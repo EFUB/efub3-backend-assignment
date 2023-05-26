@@ -1,7 +1,7 @@
 package efub.assignment.community.board.service;
 
-import efub.assignment.community.account.domain.Member;
-import efub.assignment.community.account.repository.MemberRepository;
+import efub.assignment.community.member.domain.Member;
+import efub.assignment.community.member.repository.MemberRepository;
 import efub.assignment.community.board.domain.Board;
 import efub.assignment.community.board.dto.BoardModifyRequestDto;
 import efub.assignment.community.board.dto.BoardRequestDto;
@@ -20,7 +20,7 @@ public class BoardService {
 
     @Transactional
     public Board addBoard(BoardRequestDto requestDto) {
-        Member master = memberRepository.findById(requestDto.getMemberId())
+        Member master = memberRepository.findById(requestDto.getMasterId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 계정입니다."));
 
         return boardRepository.save(
@@ -43,14 +43,14 @@ public class BoardService {
     }
 
     public Board modifyBoard(Long boardId, BoardModifyRequestDto requestDto) {
-        Board board = boardRepository.findByBoardIdAndAndMaster_MemberID(boardId, requestDto.getMemberId())
+        Board board = boardRepository.findByBoardIdAndAndMaster_MemberId(boardId, requestDto.getMasterId())
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 접근입니다."));
         board.updateBoard(requestDto);
         return board;
     }
 
     public void removeBoard(Long boardId, Long memberId) {
-        Board board = boardRepository.findByBoardIdAndAndMaster_MemberID(boardId, memberId)
+        Board board = boardRepository.findByBoardIdAndAndMaster_MemberId(boardId, memberId)
                 .orElseThrow(() -> new IllegalArgumentException("잘못된 접근입니다."));
         boardRepository.delete(board);
     }

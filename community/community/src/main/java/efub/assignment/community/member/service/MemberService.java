@@ -1,9 +1,9 @@
-package efub.assignment.community.account.service;
+package efub.assignment.community.member.service;
 
-import efub.assignment.community.account.domain.Member;
-import efub.assignment.community.account.dto.MemberUpdateRequestDto;
-import efub.assignment.community.account.dto.SignUpRequestDto;
-import efub.assignment.community.account.repository.MemberRepository;
+import efub.assignment.community.member.domain.Member;
+import efub.assignment.community.member.dto.MemberUpdateRequestDto;
+import efub.assignment.community.member.dto.SignUpRequestDto;
+import efub.assignment.community.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,11 +32,11 @@ public class MemberService {
     @Transactional(readOnly = true)
     public Member findMemberById(Long id) {
         return memberRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("해당 id를 가진 Account를 찾을 수 없습니다. id=" + id));
+                .orElseThrow(() -> new EntityNotFoundException("해당 id를 가진 Member를 찾을 수 없습니다. id=" + id));
     }
 
-    public Long update(Long accountId, MemberUpdateRequestDto requestDto) {
-        Member member = findMemberById(accountId);
+    public Long update(Long memberId, MemberUpdateRequestDto requestDto) {
+        Member member = findMemberById(memberId);
         member.updateMember(requestDto.getBio(), requestDto.getNickname());
         return member.getMemberId();
     }

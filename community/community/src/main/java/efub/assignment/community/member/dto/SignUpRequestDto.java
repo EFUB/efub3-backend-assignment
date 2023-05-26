@@ -1,6 +1,6 @@
-package efub.assignment.community.account.dto;
+package efub.assignment.community.member.dto;
 
-import efub.assignment.community.account.domain.Member;
+import efub.assignment.community.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package efub.assignment.community.board.domain;
 
-import efub.assignment.community.account.domain.Member;
+import efub.assignment.community.member.domain.Member;
 import efub.assignment.community.board.dto.BoardModifyRequestDto;
 import efub.assignment.community.global.entity.BaseTimeEntity;
 import lombok.Builder;
@@ -43,5 +43,6 @@ public class Board extends BaseTimeEntity {
         this.boardName = requestDto.getBoardName();
         this.description = requestDto.getDescription();
         this.notice = requestDto.getNotice();
+        this.master = master;
     }
 }

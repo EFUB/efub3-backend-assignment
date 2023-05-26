@@ -1,10 +1,10 @@
-package efub.assignment.community.account.controller;
+package efub.assignment.community.member.controller;
 
-import efub.assignment.community.account.domain.Member;
-import efub.assignment.community.account.dto.MemberResponseDto;
-import efub.assignment.community.account.dto.MemberUpdateRequestDto;
-import efub.assignment.community.account.dto.SignUpRequestDto;
-import efub.assignment.community.account.service.MemberService;
+import efub.assignment.community.member.domain.Member;
+import efub.assignment.community.member.dto.MemberResponseDto;
+import efub.assignment.community.member.dto.MemberUpdateRequestDto;
+import efub.assignment.community.member.dto.SignUpRequestDto;
+import efub.assignment.community.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

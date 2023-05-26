@@ -10,19 +10,19 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BoardResponseDto {
     private Long boardId;
-    private String masterName;
     private String boardName;
     private String description;
     private String notice;
+    private Long masterId;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 
     public BoardResponseDto(Board board) {
         this.boardId = board.getBoardId();
-        this.masterName = board.getMaster().getNickname();
         this.boardName = board.getBoardName();
         this.description = board.getDescription();
         this.notice = board.getNotice();
+        this.masterId = board.getMaster().getMemberId();
         this.createdDate = board.getCreatedDate();
         this.modifiedDate = board.getModifiedDate();
     }

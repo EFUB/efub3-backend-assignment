@@ -1,4 +1,4 @@
-package efub.assignment.community.account.domain;
+package efub.assignment.community.member.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
