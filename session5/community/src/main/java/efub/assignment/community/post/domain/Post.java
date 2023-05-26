@@ -42,6 +42,13 @@ public class Post extends BaseTimeEntity {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    // mappedBy : 연관 관계의 주인(Owner)
+    // cascade : 엔티티 삭제 시 연관된 엔티티의 처리 방식
+    // orphanRemoval : 고아 객체의 처리 방식. -> true : 고아 객체가 되면 자식 엔티티도 삭제.
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Comment> commentList=new ArrayList<>();
+
+
     @Builder
     public Post(Long postId,Board board,Member writer,boolean writerShow,String content){
         this.postId=postId;

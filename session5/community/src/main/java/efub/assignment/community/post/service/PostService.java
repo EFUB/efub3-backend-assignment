@@ -61,4 +61,10 @@ public class PostService {
         post.updatePost(requestDto);
         return post;
     }
+
+    @Transactional(readOnly = true)
+    public List<Post> findPostListByWriter(Long memberId) {
+        Member writer = memberService.findMemberById(memberId);
+        return postRepository.findAllByWriter(writer);
+    }
 }
