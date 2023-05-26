@@ -1,7 +1,9 @@
 package com.example.demo.post.domain;
 
 import com.example.demo.board.domain.Board;
+import com.example.demo.comment.domain.Comment;
 import com.example.demo.global.entity.BaseTimeEntity;
+import com.example.demo.heart.domain.PostHeart;
 import com.example.demo.member.domain.Member;
 import com.example.demo.post.dto.PostModifyRequestDto;
 import lombok.AccessLevel;
@@ -10,6 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -39,6 +43,16 @@ public class Post extends BaseTimeEntity{
     @ManyToOne
     @JoinColumn(name = "board_id")
     private Board board;
+
+    // mappedBy : 연관 관계의 주인(Owner)
+    // cascade : 엔티티 삭제 시 연관된 엔티티의 처리 방식
+    // orphanRemoval : 고아 객체(연관된 부모 엔티티가 없는 자식 엔티티)의 처리 방식
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> commentList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PostHeart> postHeartList = new ArrayList<>();
+
 
     @Builder
     public Post (Boolean anonymous, String content, Member writer, Board board) {
