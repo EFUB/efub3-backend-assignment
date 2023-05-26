@@ -31,7 +31,7 @@ public class Comment extends BaseTimeEntity {
     private Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)  // Comment가 Many, Account(작성자)가 One
-    @JoinColumn(name = "account_id", nullable = false, updatable = false)
+    @JoinColumn(name = "member_id", nullable = false, updatable = false)
     private Member writer;
 
     @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true)
