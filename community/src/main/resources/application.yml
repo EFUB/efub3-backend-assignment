@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/testas?createDatabaseIfNotExist=true&characterEncoding=UTF-8&characterSetResults=UTF-8
+    username: root
+    password: 1234
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: true
