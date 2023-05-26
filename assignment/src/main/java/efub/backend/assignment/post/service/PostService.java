@@ -4,6 +4,7 @@ import efub.backend.assignment.board.domain.Board;
 import efub.backend.assignment.board.repository.BoardRepository;
 import efub.backend.assignment.member.domain.Member;
 import efub.backend.assignment.member.repository.MemberRepository;
+import efub.backend.assignment.member.service.MemberService;
 import efub.backend.assignment.post.domain.Post;
 import efub.backend.assignment.post.dto.PostModifyRequestDto;
 import efub.backend.assignment.post.dto.PostRequestDto;
@@ -14,14 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service // 레포지토리만 봄
-@RequiredArgsConstructor
+@Service
 @Transactional
+@RequiredArgsConstructor
 public class PostService {
 
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
     private final BoardRepository boardRepository;
+    private final MemberService memberService;
 
     public Post addPost(PostRequestDto requestDto) {
         Member writer = memberRepository.findById(requestDto.getWriterId())
@@ -40,14 +42,18 @@ public class PostService {
         );
     }
 
+    @Transactional(readOnly = true)
     public List<Post> findPostList() {
+
         return postRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     public Post findPost(Long postId) {
         return postRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다."));
     }
+
     @Transactional(readOnly = true)
     public void removePost(Long postId, Long memberId) { // 리턴값 없음
         Post post = postRepository.findByPostIdAndWriter_MemberId(postId, memberId)
@@ -57,9 +63,14 @@ public class PostService {
     }
 
     public Post modifyPost(Long postId, PostModifyRequestDto requestDto) {
-        Post post = postRepository.findById(postId)
-                .orElseThrow(() -> new IllegalArgumentException("잘못된 접근입니다."));
+        Post post=postRepository.findByPostIdAndWriter_MemberId(postId,requestDto.getWriterId())
+                .orElseThrow(()->new IllegalArgumentException("잘못된 접근입니다."));
         post.updatePost(requestDto);
         return post;
+    }
+
+    public List<Post> findPostListByWriter(Long memberId) {
+        Member member = memberService.findMemberById(memberId);
+        return postRepository.findAllByWriter(member);
     }
 }

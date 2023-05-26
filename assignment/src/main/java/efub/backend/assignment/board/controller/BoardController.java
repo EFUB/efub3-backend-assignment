@@ -25,19 +25,6 @@ public class BoardController {
         return new BoardResponseDto(board);
     }
 
-    /* @GetMapping
-    @ResponseStatus(value = HttpStatus.OK)
-    public List<BoardResponseDto> boardListFind() {
-        List<Board> boardList = boardService.findBoardList();
-        List<BoardResponseDto> responseDtoList = new ArrayList<>();
-
-        for (Board board : boardList) {
-            responseDtoList.add(new BoardResponseDto(board));
-        } // stream으로 한줄로 바꾸는것 시도해보기!
-
-        return responseDtoList;
-    } */
-
     @GetMapping("/{boardId}")
     @ResponseStatus(value = HttpStatus.OK)
     public BoardResponseDto boardFind(@PathVariable Long boardId) {
