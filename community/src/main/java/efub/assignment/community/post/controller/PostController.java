@@ -1,5 +1,7 @@
 package efub.assignment.community.post.controller;
 
+import efub.assignment.community.heart.dto.HeartRequestDto;
+import efub.assignment.community.heart.service.PostHeartService;
 import efub.assignment.community.post.domain.Post;
 import efub.assignment.community.post.dto.PostModifyRequestDto;
 import efub.assignment.community.post.dto.PostRequestDto;
@@ -19,6 +21,7 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+    private final PostHeartService postHeartService;
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
@@ -64,5 +67,21 @@ public class PostController {
     public PostResponseDto postModify(@PathVariable Long postId, @RequestBody PostModifyRequestDto requestDto){
         Post post = postService.modifyPost(postId, requestDto);
         return new PostResponseDto(post);
+    }
+
+    // 좋아요 생성
+    @PostMapping("/{postId}/hearts")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public String postHeartCreate(@PathVariable final Long postId, @RequestBody final HeartRequestDto requestDto){
+        postHeartService.createPostHeart(postId, requestDto.getMemberId());
+        return "좋아요를 눌렀습니다.";
+    }
+
+    // 좋아요 삭제
+    @DeleteMapping("/{postId}/hearts")
+    @ResponseStatus(value = HttpStatus.OK)
+    public String postHeartDelete(@PathVariable final Long postId, @RequestParam final Long memberId){
+        postHeartService.deletePostHeart(postId, memberId);
+        return "좋아요가 취소되었습니다.";
     }
 }

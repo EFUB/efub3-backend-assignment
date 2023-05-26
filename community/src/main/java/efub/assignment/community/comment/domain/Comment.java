@@ -2,6 +2,7 @@ package efub.assignment.community.comment.domain;
 
 import efub.assignment.community.comment.dto.CommentModifyRequestDto;
 import efub.assignment.community.global.entity.BaseTimeEntity;
+import efub.assignment.community.heart.domain.CommentHeart;
 import efub.assignment.community.member.domain.Member;
 import efub.assignment.community.post.domain.Post;
 import lombok.AccessLevel;
@@ -10,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -29,6 +32,9 @@ public class Comment extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id", nullable = false)
     private Post post;
+
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentHeart> commentHeartList = new ArrayList<>();
 
     @Builder
     public Comment(String content, Member writer, Post post){
