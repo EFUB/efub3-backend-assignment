@@ -1,12 +1,16 @@
 package com.example.demo.member.domain;
 
 import com.example.demo.global.entity.BaseTimeEntity;
+import com.example.demo.messageroom.domain.Messageroom;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.demo.member.domain.MemberStatus.REGISTERED;
 
@@ -37,6 +41,14 @@ public class Member extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private MemberStatus status;
+
+    // 내가 메시지를 보내서 시작된 쪽지방
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Messageroom> messageRoomAsSenderList = new ArrayList<>();
+
+    // 내가 메시지를 받아서 시작된 쪽지방
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Messageroom> messageRoomAsReceiverList = new ArrayList<>();
 
     @Builder
     public Member(String email, String password, String nickname, String university, String studentId) {
