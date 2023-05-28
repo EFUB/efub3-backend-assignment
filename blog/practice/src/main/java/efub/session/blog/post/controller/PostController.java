@@ -61,7 +61,7 @@ public class PostController {
         return new PostResponseDto(post);
     }
 
-    @PutMapping("/{postId}/hearts")
+    @PostMapping("/{postId}/hearts")
     @ResponseStatus(value = HttpStatus.CREATED)
     public String createPostHeart(@PathVariable final Long postId, @RequestBody final HeartRequestDto requestDto){
         postHeartService.create(postId, requestDto.getMemberId());

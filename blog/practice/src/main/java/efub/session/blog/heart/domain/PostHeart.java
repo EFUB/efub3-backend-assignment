@@ -28,7 +28,7 @@ public class PostHeart {
 
     // 작성자 - writer 참조
     @ManyToOne(fetch = FetchType.LAZY)
-    @NotNull(message = "게시글은 필수로 입력되어야 합니다.")
+    @NotNull(message = "작성자는 필수로 입력되어야 합니다.")
     @JoinColumn(name = "member_id", updatable = false)
     private Member writer;
 
