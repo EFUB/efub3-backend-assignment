@@ -1,5 +1,7 @@
 package efub.backend.assignment.notification.service;
 
+import efub.backend.assignment.member.domain.Member;
+import efub.backend.assignment.member.service.MemberService;
 import efub.backend.assignment.notification.domain.Notification;
 import efub.backend.assignment.notification.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NotificationService {
     private final NotificationRepository notificationRepository;
+    private final MemberService memberService;
 
-    public List<Notification> getNotifications() {
-        return notificationRepository.findAll();
+    @Transactional(readOnly = true)
+    public List<Notification> getNotificationsList(Long memberId) {
+        Member member = memberService.findMemberById(memberId);
+        return notificationRepository.findAllByMemberId(memberId);
     }
 }

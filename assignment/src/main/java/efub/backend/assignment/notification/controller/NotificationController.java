@@ -5,12 +5,10 @@ import efub.backend.assignment.notification.dto.NotificationResponseDto;
 import efub.backend.assignment.notification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,8 +18,8 @@ public class NotificationController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<NotificationResponseDto> getNotifications() {
-        List<Notification> notifications = notificationService.getNotifications();
-        return NotificationResponseDto.from(notifications);
+    public List<NotificationResponseDto> getNotifications(@PathVariable Long memberId) {
+        List<Notification> notificationList = notificationService.getNotificationsList(memberId);
+        return notificationList.stream().map(NotificationResponseDto::from).collect(Collectors.toList());
     }
 }
