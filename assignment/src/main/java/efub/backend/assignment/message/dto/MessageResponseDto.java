@@ -22,26 +22,31 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MessageResponseDto {
-    private Member senderId;
-    private Member receiverId;
+    private Long senderId;
+    private Long receiverId;
     private Long messageId;
+    private Long messageRoomId;
     private String content;
     private LocalDateTime createdDate;
 
-    public MessageResponseDto(Member senderId, Member receiverId, Long messageId, String content, LocalDateTime createdDate) {
+    public MessageResponseDto(Long senderId, Long receiverId, Long messageId, Long messageRoomId, String content
+    , LocalDateTime createdDate){
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.messageId = messageId;
+        this.messageRoomId = messageRoomId;
         this.content = content;
         this.createdDate = createdDate;
     }
 
-    public static efub.backend.assignment.message.dto.MessageResponseDto from(Message message) {
-        return new efub.backend.assignment.message.dto.MessageResponseDto(
-                message.getSenderId(),
-                message.getReceiverId(),
+    public static MessageResponseDto from(Message message) {
+        return new MessageResponseDto(
+                message.getSender().getMemberId(),
+                message.getReceiver().getMemberId(),
                 message.getMessageId(),
+                message.getMessageRoom().getRoomId(),
                 message.getContent(),
-                message.getCreatedDate());
+                message.getCreatedDate()
+        );
     }
 }

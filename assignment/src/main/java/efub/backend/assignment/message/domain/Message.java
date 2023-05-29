@@ -16,7 +16,8 @@ public class Message extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long messageId; // 카멜식 표기, mysql에서는 post_id
+    @Column(name = "message_id")
+    private Long messageId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
@@ -24,22 +25,20 @@ public class Message extends BaseTimeEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id")
-    private Member senderId;
+    private Member sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id")
-    private Member receiverId;
+    private Member receiver;
 
     @Column(columnDefinition = "TEXT") // string이 아니라 text임을 명시
     private String content;
 
     @Builder
-    public Message(Long messageId, MessageRoom messageRoom, Member senderId, Member receiverId, String content) {
-        this.messageId = messageId;
+    public Message(MessageRoom messageRoom, Member sender, Member receiver, String content) {
         this.messageRoom = messageRoom;
-        this.senderId = senderId;
-        this.receiverId = receiverId;
+        this.sender = sender;
+        this.receiver = receiver;
         this.content = content;
     }
-
 }

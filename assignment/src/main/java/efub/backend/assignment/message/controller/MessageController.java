@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 @RequestMapping("/messages") // 경로 맵핑
 @RequiredArgsConstructor // lombok
 public class MessageController {
-
     private final MessageService messageService;
 
+    // 쪽지 생성
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
     public MessageResponseDto messageAdd(@RequestBody MessageRequestDto requestDto){
@@ -25,17 +25,11 @@ public class MessageController {
         return MessageResponseDto.from(message);
     }
 
+    // 쪽지 목록 조회
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
-    public List<MessageResponseDto> messageListFind() {
-        List<Message> messageList = messageService.findMessageList();
+    public List<MessageResponseDto> findMessageList(@PathVariable Long messageRoomId) {
+        List<Message> messageList = messageService.findMessageList(messageRoomId);
         return messageList.stream().map(MessageResponseDto::from).collect(Collectors.toList());
-    }
-
-    @GetMapping("/{messageId}")
-    @ResponseStatus(value = HttpStatus.OK)
-    public MessageResponseDto messageFind(@PathVariable Long messageId) {
-        Message message = messageService.findMessage(messageId);
-        return MessageResponseDto.from(message);
     }
 }

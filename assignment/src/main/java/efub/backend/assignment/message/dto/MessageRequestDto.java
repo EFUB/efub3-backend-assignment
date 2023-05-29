@@ -1,7 +1,8 @@
 package efub.backend.assignment.message.dto;
 
-import efub.backend.assignment.member.domain.Member;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /*
 {
@@ -13,10 +14,10 @@ import lombok.Getter;
  */
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MessageRequestDto {
-    private Member senderId;
-    private Member receiverId;
+    private Long senderId;
+    private Long receiverId;
     private Long messageRoomId;
     private String content;
-
 }

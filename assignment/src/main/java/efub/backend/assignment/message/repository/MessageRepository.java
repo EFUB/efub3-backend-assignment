@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
-    Optional<Message> findByMessageIdAndWriter_MemberId(Long messageId, Long memberId);
-    //네이밍으로 디비
+
+    // 특정 쪽지방의 쪽지 목록 조회
+    List<Message> findAllByMessageRoom_RoomId(Long messageRoomId);
+    List<Message> findAllBySenderAndReceiver(Member sender, Member receiver);
 }

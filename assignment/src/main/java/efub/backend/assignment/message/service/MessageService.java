@@ -26,27 +26,27 @@ public class MessageService {
 
     public Message addMessage(MessageRequestDto requestDto) {
         MessageRoom messageRoom = messageRoomRepository.findById(requestDto.getMessageRoomId())
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시판입니다.")); // Board를 넘겨받는 dto가 request 파라미터
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 쪽지방입니다."));
 
-        return messageRepository.save( // mysql에서는 insert
+        Member sender = memberRepository.findById(requestDto.getSenderId())
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 계정입니다."));
+
+        Member receiver = memberRepository.findById(requestDto.getSenderId())
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 계정입니다."));
+
+        return messageRepository.save(
                 Message.builder()
-                        .senderId(requestDto.getSenderId())
-                        .receiverId(requestDto.getReceiverId())
+                        .sender(sender)
+                        .receiver(receiver)
                         .content(requestDto.getContent())
                         .messageRoom(messageRoom)
                         .build()
         );
     }
 
+    // 쪽지 목록 조회
     @Transactional(readOnly = true)
-    public List<Message> findMessageList() {
-        return messageRepository.findAll();
+    public List<Message> findMessageList(Long messageRoomId) {
+        return messageRepository.findAllByMessageRoom_RoomId(messageRoomId);
     }
-
-    @Transactional(readOnly = true)
-    public Message findMessage(Long messageId) {
-        return messageRepository.findById(messageId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다."));
-    }
-
 }
