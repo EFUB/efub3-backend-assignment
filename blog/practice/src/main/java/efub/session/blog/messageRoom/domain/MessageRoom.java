@@ -20,15 +20,15 @@ public class MessageRoom extends BaseTimeEntity {
     private Long messageRoomId;
 
     @ManyToOne
-    @JoinColumn(name="sender_id")
+    @JoinColumn(name="sender_id", referencedColumnName="member_id")
     private Member sender;
 
     @ManyToOne
-    @JoinColumn(name="receiver_id")
+    @JoinColumn(name="receiver_id",referencedColumnName = "member_id")
     private Member receiver;
 
     @ManyToOne
-    @JoinColumn(name="post_id")
+    @JoinColumn(name="post_id",referencedColumnName = "post_id")
     private Post postId;
 
     @Column(columnDefinition = "TEXT")
