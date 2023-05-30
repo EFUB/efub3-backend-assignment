@@ -17,8 +17,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class MessageRoomRequestDto {
-    private Member senderId;
-    private Member receiverId;
-    private String messageContent;
-    private Long messageId;
+    private Long senderId;
+    private Long receiverId;
+    private String firstMessage;
+    private Long postId;
 }

@@ -21,24 +21,29 @@ import java.util.List;
 @NoArgsConstructor
 public class MessageRoomResponseDto {
     private Long roomId;
-    private Long senderId;
-    private Long receiverId;
-    private String messageContent;
+    private Long sender;
+    private Long receiver;
+    private Long postId;
+    private String firstMessage;
     private LocalDateTime createdDate;
 
-    public MessageRoomResponseDto(Long roomId, Long senderId, Long receiverId, String messageContent, LocalDateTime createdDate) {
+    public MessageRoomResponseDto(Long roomId, Long sender, Long receiver, Long postId, String firstMessage, LocalDateTime createdDate) {
         this.roomId = roomId;
-        this.senderId = senderId;
-        this.receiverId = receiverId;
-        this.messageContent = messageContent;
+        this.sender = sender;
+        this.receiver = receiver;
+        this.postId = postId;
+        this.firstMessage = firstMessage;
         this.createdDate = createdDate;
     }
 
-    public MessageRoomResponseDto(MessageRoom messageRoom){
-        this.roomId = messageRoom.getRoomId();
-        this.senderId = messageRoom.getSenderId().getMemberId();
-        this.receiverId = messageRoom.getReceiverId().getMemberId();
-        this.messageContent = messageRoom.getMessageContent();
-        this.createdDate = messageRoom.getCreatedDate();
+    public static MessageRoomResponseDto from(MessageRoom messageRoom) {
+        return new MessageRoomResponseDto(
+                messageRoom.getRoomId(),
+                messageRoom.getSender().getMemberId(),
+                messageRoom.getReceiver().getMemberId(),
+                messageRoom.getPost().getPostId(),
+                messageRoom.getFirstMessage(),
+                messageRoom.getCreatedDate()
+        );
     }
 }

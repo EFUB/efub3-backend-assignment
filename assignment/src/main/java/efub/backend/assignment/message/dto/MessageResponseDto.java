@@ -1,8 +1,6 @@
 package efub.backend.assignment.message.dto;
 
-import efub.backend.assignment.member.domain.Member;
 import efub.backend.assignment.message.domain.Message;
-import efub.backend.assignment.messageroom.domain.MessageRoom;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
