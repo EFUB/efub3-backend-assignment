@@ -18,18 +18,18 @@ public class MessageRoom extends BaseTimeEntity {
     private Long roomId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "sender_id")
+    @JoinColumn(name = "sender_id")
     private Member sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "receiver_id")
+    @JoinColumn(name = "receiver_id")
     private Member receiver;
 
     @Column(name = "first_message")
     private String firstMessage;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(nullable = false, name = "post_id")
+    @JoinColumn(nullable = false, name = "post_id")
     private Post post;
 
     @Builder
