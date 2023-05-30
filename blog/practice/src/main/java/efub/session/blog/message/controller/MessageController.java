@@ -28,7 +28,7 @@ public class MessageController {
         return MessageResponseDto.from(message);
     }
 
-    @GetMapping("/{messageRoomId}?memberId={memberId}")
+    @GetMapping("/{messageRoom_id}?memberId={member_id}")
     @ResponseStatus(value = HttpStatus.OK)
     public List<MessageResponseDto> messageListFind(@PathVariable Long sender, @PathVariable Long receiver){
         List<Message> messageList = messageService.findMessageList(sender,receiver);
