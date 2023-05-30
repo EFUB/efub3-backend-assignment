@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public class MessageRoomController {
     //쪽지방 생성
     @PostMapping
     @ResponseStatus(value= HttpStatus.CREATED)
-    public MessageRoomResponseDto messageRoomAdd(@RequestBody MessageRoomRequestDto requestDto){
+    public MessageRoomResponseDto messageRoomAdd(@RequestBody @Valid final MessageRoomRequestDto requestDto){
         MessageRoom messageRoom = messageRoomService.addMessageRoom(requestDto);
         return MessageRoomResponseDto.from(messageRoom);
     }
@@ -29,7 +30,7 @@ public class MessageRoomController {
     //쪽지방 여부 조회
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
-    public Long messageRoomExist(@RequestBody MessageRoomExistRequestDto requestDto){
+    public Long messageRoomExist(@RequestBody @Valid final MessageRoomExistRequestDto requestDto){
         MessageRoom messageRoom = messageRoomService.existMessageRoom(requestDto);
         Long messageRoomId = messageRoom.getMessageRoomId();
         return messageRoomId;

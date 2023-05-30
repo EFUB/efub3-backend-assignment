@@ -9,12 +9,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
-@RequestMapping("/messages")
+@RequestMapping("/messageRooms")
 @RequiredArgsConstructor
 public class MessageController {
     public final MessageService messageService;
@@ -22,12 +23,12 @@ public class MessageController {
     //쪽지 생성
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public MessageResponseDto messageCreate(@RequestBody MessageRequestDto requestDto){
+    public MessageResponseDto messageCreate(@RequestBody @Valid final MessageRequestDto requestDto){
         Message message = messageService.createMessage(requestDto);
         return MessageResponseDto.from(message);
     }
 
-    @GetMapping("/{messageRoomId}")
+    @GetMapping("/{messageRoomId}?memberId={memberId}")
     @ResponseStatus(value = HttpStatus.OK)
     public List<MessageResponseDto> messageListFind(@PathVariable Long sender, @PathVariable Long receiver){
         List<Message> messageList = messageService.findMessageList(sender,receiver);

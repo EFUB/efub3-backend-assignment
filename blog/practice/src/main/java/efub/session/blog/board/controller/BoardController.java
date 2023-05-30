@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +19,15 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
 
+    //보드 생성
     @PostMapping
     @ResponseStatus(value=HttpStatus.CREATED)
-    public BoardResponseDto boardAdd(@RequestBody BoardRequestDto requestDto){
+    public BoardResponseDto boardAdd(@RequestBody @Valid final BoardRequestDto requestDto){
         Board board = boardService.addBoard(requestDto);
         return new BoardResponseDto(board);
     }
 
+    //보드 목록 조회
     @GetMapping
     @ResponseStatus(value = HttpStatus.OK)
     public List<BoardResponseDto> boardListFind(){
@@ -37,6 +40,7 @@ public class BoardController {
         return responseDtoList;
     }
 
+    //보드 조회
     @GetMapping("/{boardId}")
     @ResponseStatus(value = HttpStatus.OK)
     public BoardResponseDto boardFind(@PathVariable Long boardId){
@@ -44,6 +48,7 @@ public class BoardController {
         return new BoardResponseDto(board);
     }
 
+    //보드 삭제
     @DeleteMapping("/{boardId}")
     @ResponseStatus(value = HttpStatus.OK)
     public String boardRemove(@PathVariable Long boardId,@RequestParam Long memberId){
@@ -51,9 +56,10 @@ public class BoardController {
         return "성공적으로 삭제되었습니다.";
     }
 
+    //보드 수정
     @PutMapping("/{boardId}")
     @ResponseStatus(value = HttpStatus.OK)
-    public BoardResponseDto boardModify(@PathVariable Long boardId,@RequestBody BoardModifyRequestDto requestDto){
+    public BoardResponseDto boardModify(@PathVariable Long boardId,@RequestBody @Valid final BoardModifyRequestDto requestDto){
         Board board = boardService.modifyBoard(boardId,requestDto);
         return new BoardResponseDto(board);
     }
