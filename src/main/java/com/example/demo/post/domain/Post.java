@@ -5,7 +5,7 @@ import com.example.demo.comment.domain.Comment;
 import com.example.demo.global.entity.BaseTimeEntity;
 import com.example.demo.heart.domain.PostHeart;
 import com.example.demo.member.domain.Member;
-import com.example.demo.post.dto.PostModifyRequestDto;
+import com.example.demo.messageroom.domain.Messageroom;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -52,6 +52,10 @@ public class Post extends BaseTimeEntity{
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PostHeart> postHeartList = new ArrayList<>();
+
+    // 글에서 시작된 쪽지방
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Messageroom> messageRoomList = new ArrayList<>();
 
 
     @Builder
