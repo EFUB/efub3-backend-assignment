@@ -51,7 +51,7 @@ public class PostHeartService {
 
     @Transactional(readOnly = true)
     public boolean isExistsByWriterAndPost(Member member, Post post) {
-        return postHeartRepository.existByWriterAndPost(member, post);
+        return postHeartRepository.existsByWriterAndPost(member, post);
     }
 
     @Transactional(readOnly = true)

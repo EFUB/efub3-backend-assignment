@@ -26,7 +26,7 @@ public class CommentService {
     // 의존관계 : CommentService -> PostService
     private final PostService postService;
     // 의존관계 : CommentService -> AccountService
-    private final CommentService commentService;
+    //private final CommentService commentService; // 순환이 발생하므로 삭제
     private final MemberService memberService;
 
     // 댓글 작성

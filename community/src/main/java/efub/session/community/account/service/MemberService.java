@@ -46,4 +46,11 @@ public class MemberService {
         Member member = findMemberById(memberId);
         member.withdrawMember();
     }
+
+    @Transactional(readOnly = true)
+    public Member findMemberByEmail(String email){
+        return memberRepository.findByEmail(email)
+                .orElseThrow(()-> new EntityNotFoundException("해당 email을 가진 게정을 찾을 수 잆습니다." +
+                        "email = " + email));
+    }
 }

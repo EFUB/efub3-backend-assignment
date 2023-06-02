@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.xml.stream.events.Comment;
+import efub.session.community.comment.domain.Comment;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
