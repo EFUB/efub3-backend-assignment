@@ -53,8 +53,8 @@ public class BoardController {
 
     @DeleteMapping("/{boardId}/{memberId}")
     @ResponseStatus(value = HttpStatus.OK)
-    public String BoardRemove(@PathVariable Long boardId, @RequestBody Long memberId) {
-        boardService.removeBoard(boardId, memberId);
+    public String boardRemove(@PathVariable Long boardId) {
+        boardService.removeBoard(boardId);
         return "성공적으로 삭제되었습니다.";
     }
 }

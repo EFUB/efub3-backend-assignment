@@ -24,8 +24,8 @@ public class PostController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public PostResponseDto postAdd(@RequestBody PostRequestDto postRequestDto) {
-        Post post = postService.addPost(postRequestDto);
+    public PostResponseDto postAdd(@RequestBody PostRequestDto requestDto) {
+        Post post = postService.addPost(requestDto);
         return PostResponseDto.from(post);
     }
 
@@ -52,7 +52,7 @@ public class PostController {
 
     @DeleteMapping("/{postId}/{memberId}")
     @ResponseStatus(value = HttpStatus.OK)
-    public String postRemove(@PathVariable Long postId, @RequestParam Long memberId) {
+    public String postRemove(@PathVariable Long postId, @PathVariable Long memberId) {
         postService.removePost(postId, memberId);
         return "성공적으로 삭제되었습니다.";
     }
