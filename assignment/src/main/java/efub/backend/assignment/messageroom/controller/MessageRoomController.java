@@ -1,7 +1,5 @@
 package efub.backend.assignment.messageroom.controller;
 
-import efub.backend.assignment.member.service.MemberService;
-import efub.backend.assignment.message.domain.Message;
 import efub.backend.assignment.messageroom.domain.MessageRoom;
 import efub.backend.assignment.messageroom.dto.MessageRoomCheckRequestDto;
 import efub.backend.assignment.messageroom.dto.MessageRoomListResponseDto;
@@ -20,8 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MessageRoomController {
     private final MessageRoomService messageRoomService;
-    private final Message messageService;
-    private final MemberService memberService;
 
     // 쪽지방 생성
     @PostMapping

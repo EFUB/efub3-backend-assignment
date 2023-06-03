@@ -1,6 +1,5 @@
 package efub.backend.assignment.messageroom.dto;
 
-import efub.backend.assignment.message.domain.Message;
 import efub.backend.assignment.messageroom.domain.MessageRoom;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,7 +25,6 @@ public class MessageRoomListResponseDto {
 
         public SingleMessageRoom(MessageRoom messageRoom) {
             this.roomId = messageRoom.getRoomId();
-            this.message = messageRoom.getFirstMessage();
             this.createdDate = messageRoom.getCreatedDate();
         }
 
