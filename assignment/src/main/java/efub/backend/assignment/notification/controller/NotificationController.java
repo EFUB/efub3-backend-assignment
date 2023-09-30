@@ -18,8 +18,8 @@ public class NotificationController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<NotificationResponseDto> getNotifications(@PathVariable Long memberId) {
-        List<Notification> notificationList = notificationService.getNotificationsList(memberId);
+    public List<NotificationResponseDto> getNotifications() {
+        List<Notification> notificationList = notificationService.getNotificationsList();
         return notificationList.stream().map(NotificationResponseDto::from).collect(Collectors.toList());
     }
 }

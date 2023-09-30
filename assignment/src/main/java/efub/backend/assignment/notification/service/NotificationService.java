@@ -15,11 +15,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NotificationService {
     private final NotificationRepository notificationRepository;
-    private final MemberService memberService;
 
     @Transactional(readOnly = true)
-    public List<Notification> getNotificationsList(Long memberId) {
-        Member member = memberService.findMemberById(memberId);
-        return notificationRepository.findAllByMemberId(memberId);
+    public List<Notification> getNotificationsList() {
+        return notificationRepository.findAll();
     }
 }
