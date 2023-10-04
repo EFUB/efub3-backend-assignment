@@ -9,17 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-/*
-{
-		"boardName": "벗들의 맛집",
-		"writter" : "200"
-		"writterShow" : "true",
-		"content" : "낭만식탁 맛조항요~",
-		"created": "2023-03-24",
-		"updated": "2023-03-24"
-		"postID" : "20"
-}
- */
+
 @Entity
 @NoArgsConstructor
 @Getter
@@ -39,7 +29,7 @@ public class Post extends BaseTimeEntity {
     @Column
     private boolean writerShow;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT" , nullable = false)
     private String content;
 
     // mappedBy : 연관 관계의 주인(Owner)
@@ -49,9 +39,13 @@ public class Post extends BaseTimeEntity {
     private List<Comment> commentList=new ArrayList<>();
 
 
+    //게시글 좋아요
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<PostHeart> postHeartList=new ArrayList<>();
+
+
     @Builder
-    public Post(Long postId,Board board,Member writer,boolean writerShow,String content){
-        this.postId=postId;
+    public Post(Board board,Member writer,boolean writerShow,String content){
         this.board=board;
         this.writer=writer;
         this.writerShow=writerShow;
