@@ -23,6 +23,7 @@ public class BoardTest {
 
 	}
 
+
 	private Board createBoard(String name, String description, Member owner){
 		Board board=Board.builder()
 			.name(name)
