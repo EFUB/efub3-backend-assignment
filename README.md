@@ -1,2 +1,14 @@
-# efub3-backend-example
-💚 이펍 3기 백엔드 과제 예시 레포지토리
+# 📗 Community 과제 📗
+
+
+## 🍀 Community ERD
+
+[사진]
+
+## 🍀 Community query
+
+[사진]
+
+## 🍀 Community API 문서 
+
+[노션 링크 첨부]
