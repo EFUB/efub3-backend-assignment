@@ -1,4 +1,4 @@
-package efub.session.blog.board.comment;
+package efub.session.blog.comment;
 
 import efub.session.blog.board.domain.Board;
 import efub.session.blog.board.service.BoardService;
