@@ -8,7 +8,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import efub.backend.assignment.board.dto.BoardModifyRequestDto;
 import efub.backend.assignment.member.domain.Member;
-import efub.backend.assignment.member.domain.MemberStatus;
 
 class BoardTest {
 
@@ -80,7 +79,7 @@ class BoardTest {
 				.boardHost(writer)
 				.build();
 
-			testEntityManager.persist(board);  // 데이터베이스에 Member 객체 저장하면서 예외가 발생!
+			testEntityManager.persist(board);
 			testEntityManager.flush();
 		});
 	}
