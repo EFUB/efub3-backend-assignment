@@ -55,4 +55,12 @@ public class Post extends BaseTimeEntity {
         this.content=requestDto.getContent();
     }
 
+    public void updatePostContent(String content){
+        this.content=getContent();
+    }
+
+    public void updatePostOwner(Member member){
+        this.owner=member;
+    }
+
 }
