@@ -1,5 +1,6 @@
 package efub.backend.assignment.comment.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /*
@@ -9,7 +10,9 @@ import lombok.Getter;
 }
  */
 @Getter
+@AllArgsConstructor
 public class CommentModifyRequestDto {
     private Long writerId;
     private String content;
+
 }
