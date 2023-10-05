@@ -43,7 +43,7 @@ class BoardRepositoryTest {
         assertThat(findBoard.getBoardOwner().getMemberId()).isEqualTo(memberId);
     }
 
-    /* 실패 : 존재하지 않는 boardId 로 게시판을 조회하는 경우 */
+    /* 실패 : 존재하지 않는 boardId 로 게시판을 조회 */
     @Test
     public void findByBoardId_GivenInvalidBoardId_ReturnNull(){
         /* given */
@@ -54,7 +54,7 @@ class BoardRepositoryTest {
         assertThat(board).isEqualTo(null);
     }
 
-    /* 실패 : 존재하지 않는 게시판을 삭제하려 하는 경우 */
+    /* 실패 : 존재하지 않는 게시판을 삭제 */
     @Test
     public void deleteBoard_GivenInvalidBoard_ReturnInvalidDataAccessApiUsageException(){
         /* given */

@@ -50,7 +50,7 @@ class PostTest {
         assertThat(e.getMessage()).isEqualTo(null);
     }
 
-    /* 실패 : 게시글의 내용을 null 로 수정하려 하는 경우 */
+    /* 실패 : 게시글의 내용을 null 로 수정*/
     @Test
     public void updatePost_GivenNullContent_ReturnNull(){
         /* given */

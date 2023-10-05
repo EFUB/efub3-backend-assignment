@@ -40,7 +40,7 @@ class BoardTest {
         assertThat(board.getBoardOwner().getMemberId()).isEqualTo(memberId);
     }
 
-    /* 실패 : 존재하지 않는 게시판에 대해 owner 을 변경하려 하는 경우 */
+    /* 실패 : 존재하지 않는 게시판에 대해 owner 을 변경 */
     @Test
     public void updateBoard_GivenInvalidBoard_ReturnNullPointerException(){
         /* given */
@@ -56,7 +56,7 @@ class BoardTest {
         assertThat(e.getMessage()).isEqualTo(null);
     }
 
-    /* 실패 : 존재하지 않는 계정을 게시판의 주인으로 바꾸려고 하는 경우 */
+    /* 실패 : 존재하지 않는 계정을 게시판의 주인으로 변경 */
     @Test
     public void updateBoard_GivenInvalidMember_ReturnNullPointerException(){
         /* given */
