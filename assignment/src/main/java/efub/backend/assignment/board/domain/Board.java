@@ -17,7 +17,7 @@ public class Board extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardId; // 카멜식 표기, mysql에서는 board_id
 
-    @Column
+    @Column(nullable = false)
     private String boardTitle;
 
     @Column(columnDefinition = "TEXT") // string이 아니라 text임을 명시

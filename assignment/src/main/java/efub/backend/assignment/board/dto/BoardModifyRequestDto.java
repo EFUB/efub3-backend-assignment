@@ -1,5 +1,6 @@
 package efub.backend.assignment.board.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /*
@@ -11,6 +12,7 @@ import lombok.Getter;
 }
  */
 @Getter //requestdto에서 대부분 들어가야함
+@AllArgsConstructor
 public class BoardModifyRequestDto {
     private String boardTitle;
     private String content;
