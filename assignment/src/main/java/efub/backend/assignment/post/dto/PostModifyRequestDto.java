@@ -1,5 +1,6 @@
 package efub.backend.assignment.post.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /*
@@ -10,6 +11,7 @@ import lombok.Getter;
 }
  */
 @Getter
+@AllArgsConstructor
 public class PostModifyRequestDto {
     private Long writerId;
     private String title;
