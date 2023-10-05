@@ -5,4 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
     Boolean existsByEmail(String email);
+
+    // 이메일 형식 확인 메서드 추가
+    boolean existsByEmailLike(String pattern);
 }
