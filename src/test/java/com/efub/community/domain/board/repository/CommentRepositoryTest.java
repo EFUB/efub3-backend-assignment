@@ -55,4 +55,18 @@ class CommentRepositoryTest {
                 });
     }
 
+    @Test
+    void findByWriter() {
+        // given
+        final Member member = new Member("test@email.com", "teST1!", "test", 1, "test");
+        final Board board = Board.builder().name("test").description("test").owner(member).build();
+        final Post post = Post.builder().board(board).content("test").writer(member).anonymous(false).build();
+        final Comment comment = Comment.builder().content("test").post(post).anonymous(false).build();
+
+        // when
+        final List<Comment> findByWriterResults = commentRepository.findByWriter(member);
+
+        // then
+        assertEquals(findByWriterResults, comment);
+    }
 }

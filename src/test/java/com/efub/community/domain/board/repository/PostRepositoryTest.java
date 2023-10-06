@@ -52,4 +52,19 @@ class PostRepositoryTest {
                 });
     }
 
+    @Test
+    void findAllByOrderByPostIdDesc() {
+        // given
+        final Member member = new Member("test@email.com", "teST1!", "test", 1, "test");
+        final Board board = Board.builder().name("test").description("test").owner(member).build();
+        final Post post1 = Post.builder().board(board).content("test").writer(member).anonymous(false).build();
+        final Post post2 = Post.builder().board(board).content("test").writer(member).anonymous(false).build();
+        List<Post> result = List.of(post2, post1);
+
+        // when
+        final List<Post> findAllByOrderByPostIdDescResults = postRepository.findAllByOrderByPostIdDesc();
+
+        // then
+        assertEquals(findAllByOrderByPostIdDescResults, result);
+    }
 }

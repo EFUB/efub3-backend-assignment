@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -44,4 +46,18 @@ class BoardRepositoryTest {
         assertTrue(existsByNameResult);
     }
 
+    @Test
+    void findAllByOrderByBoardIdDesc(){
+        // given
+        final Member member = new Member("test@email.com", "teST1!", "test", 1, "test");
+        final Board board1 = Board.builder().name("test").description("test").owner(member).build();
+        final Board board2 = Board.builder().name("test").description("test").owner(member).build();
+        List<Board> result = List.of(board2, board1);
+
+        // when
+        List<Board> findAllByOrderByBoardIdDescResults = boardRepository.findAllByOrderByBoardIdDesc();
+
+        // then
+        assertEquals(findAllByOrderByBoardIdDescResults, result);
+    }
 }
