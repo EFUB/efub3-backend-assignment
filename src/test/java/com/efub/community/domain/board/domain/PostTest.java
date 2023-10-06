@@ -1,4 +1,4 @@
-package com.efub.community.domain.post.domain;
+package com.efub.community.domain.board.domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
