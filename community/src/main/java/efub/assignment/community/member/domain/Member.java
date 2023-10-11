@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,7 +20,7 @@ public class Member extends BaseTimeEntity {
     @Column(name = "member_id", updatable = false)
     private Long memberId;
 
-
+    @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$")
     @Column(nullable = false, length = 60)
     private String email;
 

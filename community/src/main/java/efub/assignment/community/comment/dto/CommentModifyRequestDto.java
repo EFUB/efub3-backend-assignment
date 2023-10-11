@@ -1,6 +1,7 @@
 package efub.assignment.community.comment.dto;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,4 +19,10 @@ import lombok.NoArgsConstructor;
 public class CommentModifyRequestDto {
     private Long writerId;
     private String content;
+
+    @Builder
+    public CommentModifyRequestDto(Long writerId, String content){
+        this.writerId = writerId;
+        this.content = content;
+    }
 }

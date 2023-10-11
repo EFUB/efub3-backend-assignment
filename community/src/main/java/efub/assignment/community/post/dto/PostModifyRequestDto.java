@@ -2,6 +2,7 @@ package efub.assignment.community.post.dto;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /*
 {
@@ -10,7 +11,13 @@ import lombok.Getter;
 }
  */
 @Getter
+@NoArgsConstructor
 public class PostModifyRequestDto {
     private String title;
     private String content;
+
+    public PostModifyRequestDto(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }

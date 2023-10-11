@@ -1,6 +1,8 @@
 package efub.assignment.community.board.dto;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /*
 {
@@ -11,9 +13,18 @@ import lombok.Getter;
 }
  */
 @Getter
+@NoArgsConstructor
 public class BoardUpdateRequestDto {
     private String title;
     private String description;
     private String notice;
     private Long ownerId;
+
+    @Builder
+    public BoardUpdateRequestDto(String title, String description, String notice, Long ownerId){
+        this.title = title;
+        this.description = description;
+        this.notice = notice;
+		this.ownerId = ownerId;
+    }
 }
