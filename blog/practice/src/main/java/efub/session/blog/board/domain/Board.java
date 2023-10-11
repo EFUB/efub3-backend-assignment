@@ -45,4 +45,12 @@ public class Board extends BaseTimeEntity {
         this.description=requestDto.getDescription();
         this.notice=requestDto.getNotice();
     }
+
+    public void updateBoardName(String name){
+        this.name=name;
+    }
+
+    public void updateBoardOwner(Member member){
+        this.owner=member;
+    }
 }
