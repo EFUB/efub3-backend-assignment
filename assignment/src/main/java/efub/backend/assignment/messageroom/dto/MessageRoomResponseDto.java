@@ -14,8 +14,6 @@ import efub.backend.assignment.messageroom.domain.MessageRoom;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
-import java.util.List;
-
 
 @Getter
 @NoArgsConstructor
@@ -24,15 +22,13 @@ public class MessageRoomResponseDto {
     private Long sender;
     private Long receiver;
     private Long postId;
-    private String firstMessage;
     private LocalDateTime createdDate;
 
-    public MessageRoomResponseDto(Long roomId, Long sender, Long receiver, Long postId, String firstMessage, LocalDateTime createdDate) {
+    public MessageRoomResponseDto(Long roomId, Long sender, Long receiver, Long postId, LocalDateTime createdDate) {
         this.roomId = roomId;
         this.sender = sender;
         this.receiver = receiver;
         this.postId = postId;
-        this.firstMessage = firstMessage;
         this.createdDate = createdDate;
     }
 
@@ -42,7 +38,6 @@ public class MessageRoomResponseDto {
                 messageRoom.getSender().getMemberId(),
                 messageRoom.getReceiver().getMemberId(),
                 messageRoom.getPost().getPostId(),
-                messageRoom.getFirstMessage(),
                 messageRoom.getCreatedDate()
         );
     }
