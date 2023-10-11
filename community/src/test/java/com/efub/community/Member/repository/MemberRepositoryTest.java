@@ -23,10 +23,10 @@ public class MemberRepositoryTest {
 
     @BeforeEach
     public void setUp() {
-        // 테스트 데이터 생성
+        // given
         Member member = new Member("test@example.com", "password123", "TestUser", "Test University", "12345");
 
-        // Mock 객체 설정
+        // when & then
         Mockito.when(memberRepositoryMock.existsByEmail("test@example.com")).thenReturn(true);
         Mockito.when(memberRepositoryMock.findMemberByEmail("test@example.com")).thenReturn(Optional.of(member));
     }
