@@ -1,10 +1,10 @@
 package efub.session.community.post.service;
 
 import efub.session.community.account.domain.Member;
-import efub.session.community.account.dto.PostModifyRequestDto;
 import efub.session.community.account.repository.MemberRepository;
 import efub.session.community.account.service.MemberService;
 import efub.session.community.post.domain.Post;
+import efub.session.community.post.dto.PostModifyRequestDto;
 import efub.session.community.post.dto.PostRequestDto;
 import efub.session.community.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;

@@ -17,4 +17,9 @@ public class CommentModifyRequestDto {
     public CommentModifyRequestDto (String content) {
         this.content = content;
     }
+
+    public CommentModifyRequestDto(Long memberId, String content) {
+        this.memberId = memberId;
+        this.content = content;
+    }
 }

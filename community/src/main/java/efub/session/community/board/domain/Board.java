@@ -51,4 +51,9 @@ public class Board extends BaseTimeEntity {
         this.owner = owner;
     }
 
+    public String getBoardName() {
+        return title;
+    }
+
+
 }

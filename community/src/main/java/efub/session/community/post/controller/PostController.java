@@ -1,12 +1,10 @@
 package efub.session.community.post.controller;
 
-import efub.session.community.account.dto.PostModifyRequestDto;
 import efub.session.community.post.domain.Post;
+import efub.session.community.post.dto.PostModifyRequestDto;
 import efub.session.community.post.dto.PostRequestDto;
 import efub.session.community.post.dto.PostResponseDto;
-import efub.session.community.post.repository.PostRepository;
 import efub.session.community.post.service.PostService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

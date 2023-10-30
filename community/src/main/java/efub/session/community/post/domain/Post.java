@@ -1,15 +1,15 @@
 package efub.session.community.post.domain;
 
 import efub.session.community.account.domain.Member;
-import efub.session.community.account.dto.PostModifyRequestDto;
 import efub.session.community.global.entity.BaseTimeEntity;
+import efub.session.community.post.dto.PostModifyRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import efub.session.community.comment.domain.Comment;
-import java.awt.*;
+
 import java.util.ArrayList;
 import java.util.List;
 

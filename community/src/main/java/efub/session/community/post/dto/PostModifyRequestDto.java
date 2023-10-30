@@ -11,9 +11,38 @@ import lombok.NoArgsConstructor;
 public class PostModifyRequestDto {
 
     private String content;
+    private Long memberId;
+    private String title;
 
     @Builder
     public PostModifyRequestDto (String content) {
         this.content = content;
+    }
+    public PostModifyRequestDto(Long memberId, String content) {
+        this.memberId = memberId;
+        this.content = content;
+    }
+
+    // Getter 메서드
+    public Long getMemberId() {
+        return memberId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    // Setter 메서드
+    public void setMemberId(Long memberId) {
+        this.memberId = memberId;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+
+    public String getTitle() {
+        return title;
     }
 }
