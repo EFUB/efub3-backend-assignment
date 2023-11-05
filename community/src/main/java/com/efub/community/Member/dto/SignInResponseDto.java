@@ -1,12 +1,10 @@
 package com.efub.community.Member.dto;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter // test를 위해 추가
+@NoArgsConstructor
 public class SignInResponseDto {
     private Long memberId;
     private String email;

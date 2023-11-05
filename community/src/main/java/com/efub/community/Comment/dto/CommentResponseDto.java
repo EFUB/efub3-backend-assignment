@@ -4,11 +4,13 @@ import com.efub.community.Comment.domain.Comment;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Getter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Setter
+@AllArgsConstructor
 public class CommentResponseDto {
     private Long commentId;
     private String content;
