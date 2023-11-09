@@ -17,6 +17,7 @@ import javax.persistence.*;
 public class MessageRoom extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "message_room_id")
     private Long messageRoomId;
 
     @ManyToOne
