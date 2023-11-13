@@ -24,36 +24,27 @@ public class Member extends BaseTimeEntity {
 	@Column(nullable = false, length = 60)//DB에 저장될 때 조건(물리적인 데이터베이스 컬럼의 특성을 나타냄), 유효성 체크를 해주지는 않음
 	private String email;
 
-
-	@Column(nullable = false)
-	private String encodedPassword;
-
 	@Column(nullable = false, length = 16)
 	private String nickname;
-
-	@Column(nullable = false, updatable = false)
-	private Integer studentNo;
-	@Column(nullable = false, updatable = false)
-	private String university;
 
 	@Enumerated(EnumType.STRING)
 	private MemberStatus status;
 
+	@Column(length = 30)
+	@Enumerated(EnumType.STRING)
+	private RoleType roleType;
 
 	@Builder
-	public Member(String email, String encodedPassword, String nickname,Integer studentNo, String university) {
+	public Member(String email, String nickname, RoleType roleType) {
 		this.email = email;
-		this.encodedPassword = encodedPassword;
 		this.nickname = nickname;
-		this.studentNo = studentNo;
-		this.university = university;
 		this.status = REGISTERED;
+		this.roleType = roleType;
 	}
 
-
-
-	public void updateMember(String nickname){
+	public Member updateMember(String nickname){
 		this.nickname = nickname;
+		return this;
 	}
 
 	public void withdraw(){

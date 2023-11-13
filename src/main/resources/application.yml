@@ -1,11 +1,33 @@
 spring:
-  h2:
-    console:
-      enabled: true
-  profiles:
-    active: local
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:userdb;DB_CLOSE_DELAY=-1
-    username: sa
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url : jdbc:mysql://localhost:3306/test?createDatabaseIfNotExist=true&characterEncoding=UTF-8&characterSetResults=UTF-8
+    username : root
+    password: root24
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: true
+  redis:
+    host: localhost
+    port: 6379
     password:
+  jwt:
+    secret-key: letsgoploggingwithheroestoday232efubecoeco4293123
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 380321800681-gom5vo9483rtchsfj7lkl2m8oufr2uer.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
+
+
