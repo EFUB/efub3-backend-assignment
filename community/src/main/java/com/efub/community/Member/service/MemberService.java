@@ -22,14 +22,15 @@ public class MemberService {
     private final RefreshTokenService refreshTokenService;
     private final BCryptPasswordEncoder encoder;
 
+    // test를 위해 임시로 public으로 설정
     private final long expiredTime = 1000 * 60 * 60L; // 1시간
     private final long refreshExpiredTime = 7 * 24 * 60 * 60L; // 일주일
 
     @Value("${spring.jwt.secret-key}")
-    private String accessKey;
+    public String accessKey;
 
     @Value("${spring.jwt.refresh-key}")
-    private String refreshKey;
+    public String refreshKey;
 
     @Transactional(readOnly = true)
     public Member findMemberByEmail(String email) {
@@ -114,5 +115,12 @@ public class MemberService {
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
                 .build();
+    }
+
+    // 메서드
+    @Transactional(readOnly = true)
+    public Member getMemberById(Long id) {
+        return memberRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Member id " + id + " does not exist!"));
     }
 }

@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/auth")
+//@RequestMapping("/auth")
+@RequestMapping(path = "/auth", produces = "application/json;charset=UTF-8")
 public class MemberController {
     private final MemberService memberService;
     private final RefreshTokenService refreshTokenService;

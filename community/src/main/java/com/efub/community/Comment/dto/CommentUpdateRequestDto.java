@@ -1,12 +1,10 @@
 package com.efub.community.Comment.dto;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
+@NoArgsConstructor
 public class CommentUpdateRequestDto {
     private Long writerId;
     private String content;
