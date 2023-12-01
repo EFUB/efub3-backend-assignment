@@ -18,18 +18,6 @@ import javax.persistence.EntityNotFoundException;
 public class MemberService {
 	private final MemberRepository memberRepository;
 
-	public Long signUp(SignUpRequestDto requestDto){
-		if (isExistedStudentNo(requestDto.getStudentNo())){
-			throw new IllegalArgumentException("이미 존재하는 학번입니다. " + String.valueOf(requestDto.getStudentNo()));
-		}
-		if (isExistedNickname(requestDto.getNickname())){
-			throw new IllegalArgumentException("중복된 닉네임이 있습니다. " + requestDto.getNickname());
-		}
-		String encodedPassword = requestDto.getPassword();
-		Member member = memberRepository.save(requestDto.toEntity(encodedPassword));
-		return member.getMemberId();
-	}
-
 
 	public Long update(Long memberId, MemberUpdateRequestDto requestDto){
 		if (isExistedNickname(requestDto.getNickname())){
