@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MessageRoomRepository extends JpaRepository<MessageRoom,Long> {
-    Optional<MessageRoom> findByPostIdAndSenderIdAndReceiverId(Long postId, Long senderId, Long receiverId);
+    Optional<MessageRoom> findByPostIdAndSenderAndReceiver(Long postId, Long senderId, Long receiverId);
 
-    List<MessageRoom> findAllByMember(Member member);
+    List<MessageRoom> findAllBySenderOrReceiver(Member sender, Member receiver);
 }

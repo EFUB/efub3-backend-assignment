@@ -48,7 +48,7 @@ public class MessageRoomService {
         Member receiver = memberService.findMemberById(requestDto.getReceiverId());
         Post post = postService.findPost(requestDto.getPostId());
 
-        return messageRoomRepository.findByPostIdAndSenderIdAndReceiverId(post.getPostId(), sender.getMemberId(), receiver.getMemberId())
+        return messageRoomRepository.findByPostIdAndSenderAndReceiver(post.getPostId(), sender.getMemberId(), receiver.getMemberId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 쪽지방입니다."));
     }
     
@@ -56,7 +56,7 @@ public class MessageRoomService {
     @Transactional(readOnly = true)
     public List<MessageRoom> findMessageRoomList(Long memberId) {
         Member member = memberService.findMemberById(memberId);
-        return messageRoomRepository.findAllByMember(member);
+        return messageRoomRepository.findAllBySenderOrReceiver(member, member);
     }
     
     //쪽지방 삭제

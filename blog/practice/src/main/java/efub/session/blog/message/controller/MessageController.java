@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
-@RequestMapping("/messageRooms")
+@RequestMapping("/messages")
 @RequiredArgsConstructor
 public class MessageController {
     public final MessageService messageService;
